@@ -19,10 +19,10 @@
         y2: 0
     };
     var statusElem = document.getElementById("status");
-    var basketballGarbageAligned = false;
+    var basketballHoopAligned = false;
     var interval = 0;
 /* write functions */
-    // find coordinates of garbage can
+    // find coordinates of basketball hoop
     function hoopCoordinates() {
         var el = hoop.elem;
         var width = el.offsetWidth;
@@ -57,10 +57,10 @@
     function checkAlignment() {
         return (ball.x1 > hoop.x1 && ball.x2 < hoop.x2);
     }
-    // check if basketball has reached garbage can end game accordingly and return true
+    // check if basketball has reached basketball hoop end game accordingly and return true
     function checkforDone() {
         basketballYCoordinates();
-        if (ball.y2 >= hoop.y1 && basketballGarbageAligned === false) {
+        if (ball.y2 >= hoop.y1 && basketballHoopAligned === false) {
             return true;
         }
         if (ball.y1 >= hoop.y1) {
@@ -73,7 +73,7 @@
         ball.left += 10;
         ball.elem.style.left = ball.left + "px";
     }
-    // check if basketball has reached garbage can and either move basketball or end game
+    // check if basketball has reached basketball hoop and either move basketball or end game
     function moveDown() {
         if (checkforDone()) {
             // stop downward movement interval
@@ -104,8 +104,8 @@
                 clearInterval(interval);
                 // get basketball coordinates
                 basketballXCoordinates();
-                // verify basketball is aligned with garbage can
-                basketballGarbageAligned = checkAlignment();
+                // verify basketball is aligned with basketball hoop
+                basketballHoopAligned = checkAlignment();
                 // start down movement
                 interval = setInterval(function () {
                     moveDown();
@@ -113,7 +113,8 @@
             }
         });
     }
-    /* initialize game */
+/* initialize game */
+    // set up initialization
     function initialize() {
         eventBindings();
         hoopCoordinates();

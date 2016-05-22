@@ -64,6 +64,7 @@
         function endGame(statusText, buttonText) {
             statusElem.textContent = statusText;
             playButton.textContent = buttonText;
+            ball.elem.className = 'poof';
             document.getElementsByClassName('hide')[0].className = 'show';
         }
         if (ball.y2 >= hoop.y1 && basketballHoopAligned === false) {
@@ -93,6 +94,7 @@
     }
     // reset #basketball to 0,0
     function resetbasketball(left, top) {
+        ball.elem.className = '';
         ball.left = left;
         ball.top = top;
         ball.elem.style.left = left + "px";
@@ -105,7 +107,7 @@
             // hide status/button
             document.getElementsByClassName('show')[0].className = "hide";
             // reset basketball
-            resetbasketball(0, 0);
+            resetbasketball(0, 150);
             // start right movement
             interval = setInterval(function () {
                 moveRight();

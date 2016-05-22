@@ -19,10 +19,10 @@
         y2: 0
     };
     var statusElem = document.getElementById("status");
-    var basketballGarbageAligned = false;
+    var basketballHoopAligned = false;
     var interval = 0;
 /* write functions */
-    // find coordinates of garbage can
+    // find coordinates of basketball hoop
     function hoopCoordinates() {
         var el = hoop.elem;
         var width = el.offsetWidth;
@@ -55,11 +55,11 @@
     }
     // is the basketball aligned with the hoop?
     function checkAlignment() {}
-    // check if basketball has reached garbage can end game accordingly and return true
+    // check if basketball has reached basketball hoop end game accordingly and return true
     function checkforDone() {}
     // move basketball to the right over time
     function moveRight() {}
-    // check if basketball has reached garbage can and either move basketball or end game
+    // check if basketball has reached basketball hoop and either move basketball or end game
     function moveDown() {}
     // reset #basketball to 0,0
     function resetbasketball(left, top) {}

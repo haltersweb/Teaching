@@ -1,0 +1,30 @@
+body { background-color: white;}
+#hoop {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 160px;
+    height: 90px;
+    margin-left: -80px;
+    background-image: url(http://images.clipartpanda.com/hoop-clipart-basketball-hoop.png);
+    background-color: transparent;
+    background-size: cover;
+}
+#basketball {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    transition: transform 0.5s;
+    background-color: transparent;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Basketball_Clipart.svg/150px-Basketball_Clipart.svg.png);
+    background-size: cover;
+}
+.poof {
+    transform: scale(0,0);
+}
+h1, p { text-align: center; color: #900; }
+.hide { display: none; }
+.show { display: block; }
