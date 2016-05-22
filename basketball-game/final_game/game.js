@@ -1,32 +1,32 @@
 (function () {
     'use strict';
-    var playButton = document.getElementById("play"),
-        hoop = {
-            elem: document.getElementById("hoop"),
-            x1: 0,
-            x2: 0,
-            y1: 0,
-            y2: 0
-        },
-        ball = {
-            elem: document.getElementById("basketball"),
-            left: 0, // for setting left style position
-            top: 0, // for setting top style position
-            x1: 0, // holds x1 point after spacebar pressed
-            x2: 0, // holds x2 point after spacebar pressed
-            y1: 0,
-            y2: 0
-        },
-        statusElem = document.getElementById("status"),
-        basketballGarbageAligned = false,
-        interval = 0;
+    var playButton = document.getElementById("play");
+    var hoop = {
+        elem: document.getElementById("hoop"),
+        x1: 0,
+        x2: 0,
+        y1: 0,
+        y2: 0
+    };
+    var ball = {
+        elem: document.getElementById("basketball"),
+        left: 0, // for setting left style position
+        top: 0, // for setting top style position
+        x1: 0, // holds x1 point after spacebar pressed
+        x2: 0, // holds x2 point after spacebar pressed
+        y1: 0,
+        y2: 0
+    };
+    var statusElem = document.getElementById("status");
+    var basketballGarbageAligned = false;
+    var interval = 0;
     // find coordinates of garbage can
     function hoopCoordinates() {
-        var el = hoop.elem,
-            width = el.offsetWidth,
-            height = el.offsetHeight,
-            x1 = el.offsetLeft,
-            y1 = el.offsetTop;
+        var el = hoop.elem;
+        var width = el.offsetWidth;
+        var height = el.offsetHeight;
+        var x1 = el.offsetLeft;
+        var y1 = el.offsetTop;
         // assign values to hoop object keys
         hoop.x1 = x1;
         hoop.x2 = x1 + width;
@@ -35,22 +35,23 @@
     }
     // find x coordinates of basketball
     function basketballXCoordinates() {
-        var el = ball.elem,
-            width = el.offsetWidth,
-            x1 = el.offsetLeft;
+        var el = ball.elem;
+        var width = el.offsetWidth;
+        var x1 = el.offsetLeft;
         //assign values to basketball object keys
         ball.x1 = x1;
         ball.x2 = x1 + width;
     }
     // find y coordinates of basketball
     function basketballYCoordinates() {
-        var el = ball.elem,
-            height = el.offsetHeight,
-            y1 = el.offsetTop;
+        var el = ball.elem;
+        var height = el.offsetHeight;
+        var y1 = el.offsetTop;
         //assign values to basketball object keys
         ball.y1 = y1;
         ball.y2 = y1 + height;
     }
+    // is the basketball aligned with the hoop?
     function checkAlignment() {
         return (ball.x1 > hoop.x1 && ball.x2 < hoop.x2);
     }
@@ -96,6 +97,7 @@
         ball.elem.style.left = left + "px";
         ball.elem.style.top = top + "px";
     }
+    // set up clicks and keypresses
     function eventBindings() {
         // playButton hides status/start button and starts right movement
         playButton.addEventListener('click', function () {
@@ -125,6 +127,7 @@
             }
         });
     }
+    /* initialize game */
     function initialize() {
         hoopCoordinates();
         eventBindings();
