@@ -1,0 +1,10 @@
+.form-row {
+	margin-bottom: 1.2ex;
+}
+label {
+	display: inline-block;
+	width: 10em;
+}
+#total {
+	font-weight: bold;
+}
