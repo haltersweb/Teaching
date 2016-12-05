@@ -7,7 +7,7 @@ testBtn.addEventListener('click', function () {
 	var num1 = firstField.value;
 	var num2 = secondField.value;
 	var result = totalField.value;
-	if (parseInt(num1) + parseInt(num2) === parseInt(result)) {
+	if (parseFloat(num1) + parseFloat(num2) === parseFloat(result)) {
 		alert('CONGRATULATIONS. Your sum is correct.');
 	} else {
 		alert('Your sum is incorrect. Try again.');
