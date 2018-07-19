@@ -1,0 +1,1303 @@
+<html>
+<head>
+	<style>
+		/* Base Presentation Styles */
+		@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,700italic);
+html { background-color: #e4e4e4; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-font-smoothing: antialiased; font-family: 'Source Sans Pro', sans-serif; font-size: 18px; font-weight: 400; }
+
+/* Base Presentation Styles */
+body { font-size: 2rem;  margin: 0; padding: 0 0 10em; }
+section { display:none; padding: .25em .5em; }
+section:target {display:block;}
+h1, h2, h3 {margin: 0;}
+a { text-decoration: none; }
+a:hover { color: #0099ff; }
+a[href*="//"]:after { content: "\02911"; }
+code { 
+	font-family: monospace;
+	display: block;
+	margin: 1em 0;
+	padding: 1em;
+	background-color: #fff;
+	border-radius: .5em;
+	white-space: pre;
+	overflow: auto;
+	font-size: 2rem;
+}
+code > strong {
+	color: #c00;
+}
+img {
+	max-width: 100%;
+}
+figure {}
+figure svg {
+	border: 1px dashed #ccc;
+	color: #000;
+	background-color: #0D4863;
+	font-size: 60px;
+	font-weight: bold;
+	stroke: #fff;
+	fill: rgba(255,255,255,.3);
+	stroke-width: 2;
+	stroke-linecap: square;
+}
+figcaption {
+	font-size: .5em;
+}
+#nav { 
+	position: fixed;
+	bottom: 0;
+	display: block;
+	background-color: #ccc;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 4em;
+	overflow: auto;
+}
+#nav li {
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: "…";
+	margin: 0; padding: 0;
+	width: 7%;
+	text-align: center;
+	vertical-align: top;
+	font-weight: bold;
+}
+#nav li a { 
+	display: inline-block;
+	padding: 1em; 
+	font-size: 14px;
+	color: #0D4863;
+}
+#nav li a:hover {
+	color: #fff;
+	background-color: #0D4863;
+}
+#nav li a:visited {
+	color: #fff;
+	background-color: #0D4863;
+}
+#nav li a:active {
+	color: #000;
+}
+#nav li .ie:hover {
+	background-color: rgba(255,0,0, 0.5);
+	color: #fff;
+}
+
+/* SVG Styles */
+.draw {
+	fill: rgba(255,255,255,0.3);
+	stroke: #fff;
+	stroke-width: 1.5;
+	stroke-dasharray: 2000;
+	stroke-dashoffset: 2000;
+	animation: dash 50s ease-out forwards;
+}
+.draw-slow {
+	fill: none;
+	stroke: #0D4863;
+	stroke-width: 1;
+	stroke-dasharray: 125;
+	stroke-dashoffset: 125;
+	animation: dash 15s ease-out forwards;
+}
+.loading {
+	fill: none;
+	stroke: #2ea0dd;
+	stroke-width: 5;
+	stroke-dasharray: 200;
+	stroke-dashoffset: 200;
+	animation: dash 5s ease-out forwards;
+}
+
+@keyframes dash {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+		
+	</style>
+</head>
+<body>
+	<ul id="nav">
+		<li><a href="#0">&#10084;</a></li>
+		<li><a href="#SVG">SVG</a></li>
+		<li><a href="#caniuse">Can I Use</a></li>
+		<li><a href="#usage">usage</a></li>
+		<li><a href="#code">&lt;svg&gt;</a></li>
+		<li><a href="#coord">coordinates</a></li>
+		<li><a href="#viewBox">viewBox</a></li>
+		<li><a href="#line">&lt;line&gt;</a></li>
+		<li><a href="#circle">&lt;circle&gt;</a></li>
+		<li><a href="#ellipse">&lt;ellipse&gt;</a></li>
+		<li><a href="#rect">&lt;rect&gt;</a></li>
+		<li><a href="#polygon">&lt;polygon&gt;</a></li>
+		<li><a href="#text">&lt;text&gt;</a></li>
+		<li><a href="#path">&lt;path&gt;</a></li>
+		<li><a href="#arc">&lt;path&gt; arc</a></li>
+		<li><a href="#bezier">&lt;path&gt; bezi&eacute;r</a></li>
+		<li><a href="#image">&lt;image&gt; </a></li>
+		<li><a href="#transforms">transforms</a></li>
+		<li><a href="#g">&lt;g&gt;</a></li>
+		<li><a href="#defs">&lt;defs&gt;</a></li>
+		<li><a href="#style">&lt;style&gt;</a></li>
+		<li><a href="#symbol">&lt;symbol&gt;</a></li>
+		<li><a href="#use">&lt;use&gt;</a></li>
+		<li><a class="ie" href="#animation">animation</a></li>
+		<li><a href="#switch">&lt;switch&gt;</a></li>
+		<li><a href="#script">&lt;script&gt;</a></li>
+		<li><a href="#object">&lt;object&gt;</a></li>
+		<li><a class="ie" href="#foreignObject">&lt;foreignObject&gt;</a></li>
+		<li><a href="#more">more&hellip;</a></li>
+	</ul>
+
+
+
+
+	<section id="0">
+		<h1><figure><svg viewBox="0 0 300 100">
+				<text class="draw" x="20" y="60" fill="red" >I <tspan fill="rgb(222,0,0)" stroke="none">&#10084;</tspan> SVG!</text>
+		</svg></figure></h1>
+	</section>
+
+	<section id="SVG">
+		<h2>SVG = Scalable Vector Graphics</h2>
+		<img src="svg-logo.svg" style="float:left; margin-right: 1em;" />
+		<p>Scalable Vector Graphics (SVG) is an XML-based vector image format for two-dimensional graphics with support for interactivity and animation. The SVG specification is an open standard developed by the World Wide Web Consortium (W3C) since 1999.</p> 
+		
+		<p>SVG images and their behaviors are defined using XML text.</p>
+	</section>
+
+	<section id="caniuse">
+		<a href="http://caniuse.com/#search=svg"><img src="caniuse.png" alt="http://caniuse.com/#search=svg" /></a>
+	</section>
+
+	<section id="usage">
+		<h2>&lt;img&gt;</h2>
+		<code>&lt;img src="image.svg" /&gt;</code>
+
+		<h2>&lt;object&gt;</h2>
+		<code>&lt;object type="image/svg+xml" data="image.svg" /&gt;&lt;/object&gt;</code>
+
+		<h2>Inline code</h2>
+		<code>&lt;svg width="200" height="200" viewBox="0 0 100 100"&gt;
+	&lt;line x1="10" y1="20" x2="70" y2="40" /&gt;
+&lt;/svg&gt;
+</code>
+		<h2>In CSS</h2>
+		<style>
+			.icon {
+				background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' width='40' height='40'%3e%3ccircle cx='20' cy='20' r='20' fill='red' /%3e%3ctext fill='white' x='17' y='25'%3e!%3c/text%3e%3c/svg%3e");
+				background-size: 56px 56px;
+				background-repeat: no-repeat;
+				border: 1px solid black;
+				height: 300px;
+				width: 300px;
+			}
+		</style>
+		<code>.icon {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' width='40' height='40'%3e%3ccircle cx='20' cy='20' r='20' fill='red' /%3e%3ctext fill='white' x='17' y='25'%3e!%3c/text%3e%3c/svg%3e");
+	background-size: 56px 56px;
+	background-repeat: no-repeat;
+}</code>
+	</section>
+
+
+	<section id="code">
+		<h2>&lt;svg&gt;</h2>
+		<code>
+&lt;svg width="200" height="200" viewBox="0 0 100 100"&gt;
+<br/>
+&lt;/svg&gt;
+		</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100"></svg>
+		</figure>
+		<ul>
+			<li>Within the SVG it's more accurate to describe <b>units</b> instead of pixels. Each of the three following SVGs all have the same stroke width (2).</li>
+		</ul>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50"></rect>
+			</svg>
+			<svg width="400" height="400" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50"></rect>
+			</svg>
+			<svg width="600" height="600" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50"></rect>
+			</svg>
+		</figure>
+		
+	</section>
+
+	<section id="coord">
+		<h2>coordinates</h2>
+		<figure>
+			<img src="cartesian.svg" />
+		</figure>
+		<p>Khan Academy</p>
+		<ul>
+			<li><a href="https://www.khanacademy.org/math/algebra/introduction-to-algebra/overview_hist_alg/v/descartes-and-cartesian-coordinates">Coordinate Plane Introduction</a></li>
+			<li><a href="https://www.khanacademy.org/math/basic-geo">Basic Geometry</a></li>
+		</ul>
+	</section>
+
+
+	<section id="line">
+		<h2>&lt;line&gt;</h2>
+		<code>&lt;line x1="10" y1="20" x2="70" y2="40" /&gt;</code>
+		
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100" >
+				<line x1="10" y1="20" x2="70" y2="40"/>
+			</svg>
+		</figure>
+		<code>&lt;line x1="25" y1="25" x2="75" y2="75" /&gt;
+&lt;line x1="25" y1="75" x2="75" y2="25" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100" >
+				<line x1="25" y1="25" x2="75" y2="75"/>
+				<line x1="25" y1="75" x2="75" y2="25"/>
+			</svg>
+		</figure>
+		
+	</section>
+
+	<section id="circle">
+		<h2>&lt;circle&gt;</h2>
+		<code>&lt;circle cx="50" cy="50" r="25" /&gt;</code>
+		
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<circle cx="50" cy="50" r="25" />
+			</svg>
+		</figure>
+	</section>
+
+	<section id="ellipse">
+		<h2>&lt;ellipse&gt;</h2>
+		<code>&lt;ellipse cx="50" cy="50" rx="45" ry="25" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<ellipse cx="50" cy="50" rx="45" ry="25" />
+			</svg>
+		</figure>
+	</section>
+
+	<section id="rect">
+		<h2>&lt;rect&gt;</h2>
+		<code>&lt;rect x="25" y="25" width="50" height="50" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50" />
+			</svg>
+		</figure>
+
+		<h3>rounded rect</h3>
+		<code>&lt;rect x="25" y="25" width="50" height="50" <strong>rx="8" ry="8"</strong> /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50" rx="8" ry="8" />
+			</svg>
+		</figure>
+	</section>
+
+	<section id="text">
+		<h2>&lt;text&gt;</h2>
+		<p>&lt;text&gt; allows you to add text in a single line into the SVG. You can apply the same SVG styles, transformations, and filters to text as any other SVG element.</p>
+		<code>&lt;text x="25" y="75"&gt;I Love SVG!&lt;/text&gt;</code>
+		<figure>
+			<svg width="600" height="200" viewBox="0 0 300 100">
+				<text x="10" y="60">I Love SVG!</text>
+			</svg>
+		</figure>
+		<h3>&lt;tspan&gt;</h3>
+		<p>&lt;tspan&gt; allows you to change text styles within the line of text, much like a &lt;span&gt; element in HTML.</p>
+		<code>&lt;tspan fill="red" stroke="none"&gt;&amp;#10084;&lt;/tspan&gt;</code>
+		<figure>
+			<svg width="600" height="200" viewBox="0 0 300 100">
+				<text x="10" y="60" >I <tspan fill="red" stroke="none">&#10084;</tspan> SVG!</text>
+			</svg>
+		</figure>
+		<p>There is no native line-wrapping in SVG text.</p>
+	</section>
+
+	<section id="polygon">
+		<h2>&lt;polygon&gt;</h2>
+		<code>&lt;polygon points="50,33 75,75 25,75"/&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+			<polygon points="50,33 75,75 25,75"/>
+		</svg>
+			</figure>
+	</section>
+
+	<section id="path">
+		<h2>&lt;path&gt;</h2>
+		<code>&lt;path d="M52.512,43.173L37.585,18.684L26.39,27.57
+c0,0,9.122,21.563-2.834,25.681c-1.451,6.502,0,18.529,0,18.529
+l15.135,9.536l13.821-7.261V43.173z M47.487,43.173l14.927-24.489
+L73.61,27.57c0,0-9.124,21.563,2.834,25.681c1.45,6.502,0,18.529,0,18.529
+l-15.136,9.536l-13.821-7.261V43.173z"/&gt;</code>
+		<p>Commands</p>
+		<ul>
+			<li><b>M</b>oveTo (Absolute) or <b>m</b>oveTo (relative)</li>
+			<li><b>L</b>ineTo</li>
+			<li><b>V</b>ertical</li>
+			<li><b>H</b>orizontal</li>
+			<li>ClosePath (<b>z</b>)</li>
+		</ul>
+		<code>&lt;path d="M25,25 L75,25 L75,75 L25,75z" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<path d="M25,25 L75,25 L75,75 L25,75z"/>
+			</svg>
+		</figure>
+		<code>&lt;path d="M25,25 75,25 75,75 25,75z" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<path d="M25,25 75,25 75,75 25,75z"/>
+			</svg>
+		</figure>
+		<code>&lt;path d="M25,25 H25 V75 H75 V25z" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<path d="M25,25 H25 V75 H75 V25z"/>
+			</svg>
+		</figure>
+		
+	<h3>Absolute and Relative Paths</h3>
+	<code>&lt;path d="M50,33 75,75 25,75z" /&gt;</code>
+	<figure>
+		<svg width="200" height="200" viewBox="0 0 100 100">
+			<path d="M50,33 75,75 25,75z"/>
+		</svg>
+	</figure>
+	<code>&lt;path d="m50,33 25,42 -50,0z" /&gt;</code>
+	<figure>
+		<svg width="200" height="200" viewBox="0 0 100 100">
+			<path d="m50,33 25,42 -50,0z"/>
+		</svg>
+	</figure>
+
+	<h3>Open path</h3>
+	<code>&lt;path d="M45,15 75,30 75,60 45,75 15,60 15,30" /&gt;</code>
+	<figure>
+		<svg width="200" height="200" viewBox="0 0 100 100">
+			<path d="M45 15 75 30 75 60 45 75 15 60 15 30"/>
+		</svg>
+	</figure>
+	<code>&lt;path d="M45,15 75,30 75,60 45,75 15,60 15,30z" /&gt;</code>
+	<figure>
+		<svg width="200" height="200" viewBox="0 0 100 100">
+			<path d="M45 15 75 30 75 60 45 75 15 60 15 30z"/>
+		</svg>
+	</figure>
+	<!-- <code>&lt;path d="M45,15 75,30 V60 L45,75 15,60 V30z" /&gt;</code>
+	<figure>
+		<svg width="200" height="200" viewBox="0 0 100 100">
+			<path d="M45,15 75,30 V60 L45,75 15,60 V30z"/>
+		</svg>
+	</figure> -->
+	<!-- <h3>Path optimization</h3>
+	<code>&lt;line x1="25" y1="25" x2="75" y2="75" /&gt;
+&lt;line x1="25" y1="75" x2="75" y2="25" /&gt;
+
+&lt;path d="M25,25 75,75" /&gt;
+&lt;path d="M75,25 25,75" /&gt;
+
+&lt;path d="M25,25 75,75 M75,25 25,75 " /&gt;</code>
+	<figure>
+		<svg width="200" height="200" viewBox="0 0 100 100">
+			<path d="M25,25 75,75 M75,25 25,75" />
+		</svg>
+	</figure>
+	<code>&lt;rect x="25" y="25" width="50" height="50" rx="8" ry="8" /&gt;
+				
+&lt;path d="M25,33 a8,8 0 0 1 8,-8 H67 a8,8 0 0 1 8,8 V67 a8,8 0 0 1 -8,8 H33 a8,8 0 0 1 -8,-8z" /&gt;</code>
+	<figure>
+		<svg width="200" height="200" viewBox="0 0 100 100">
+			<path d="M25,33 a8,8 0 0 1 8,-8 H67 a8,8 0 0 1 8,8 V67 a8,8 0 0 1 -8,8 H33 a8,8 0 0 1 -8,-8z" />
+		</svg>
+	</figure> -->
+	</section>
+
+	<section id="arc">
+		<h2>path: arc</h2>
+		<p>Commands</p>
+		<ul>
+			<li><b>A</b>rcTo (A rx,ry x-axis-rotation large-arc-flag sweep-flag x,y)</li>
+		</ul>
+		<code>&lt;path d="M33,33 <strong>A33,33 0 1 0 67,67</strong>" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<g>
+					<path class="" d="M33,33 A33,33 0 1 0 67,67" />
+				</g>
+			</svg>
+		</figure>
+
+		<h3>Arc and Sweep flags</h3>
+		<style>
+			.arcFlag {
+				stroke: rgba(255,255,255,0.1);
+				fill: none;
+			}
+			.hover:hover {
+				stroke: #c00;
+			}
+		</style>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<g>
+					<path class="hover" d="M33,33 A33,33 0 1 0 67,67" />
+					<path class="hover" d="M33,33 A33,33 0 1 1 67,67" />
+					<path class="hover" d="M33,33 A33,33 0 0 1 67,67" />
+					<path class="hover" d="M33,33 A33,33 0 0 0 67,67" />
+				</g>
+			</svg>
+		</figure>
+		<h3>No flags set</h3>
+		<code>&lt;path d="M33,33 A33,33 0 <strong>0 0</strong> 67,67" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<g>
+					<path class="arcFlag" d="M33,33 A33,33 0 1 0 67,67" />
+					<path class="arcFlag" d="M33,33 A33,33 0 0 1 67,67" />
+					<path class="arcFlag" d="M33,33 A33,33 0 1 1 67,67" />
+					<path d="M33,33 A33,33 0 0 0 67,67" />
+				</g>
+			</svg>
+		</figure>
+
+		<h3>large-arc-flag</h3>
+		<code>&lt;path d="M33,33 A33,33 0 <strong>1</strong> 0 67,67" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<g>
+					<path class="arcFlag" d="M33,33 A33,33 0 0 1 67,67" />
+					<path class="arcFlag" d="M33,33 A33,33 0 1 1 67,67" />
+					<path class="arcFlag" d="M33,33 A33,33 0 0 0 67,67" />
+					<path d="M33,33 A33,33 0 1 0 67,67" />
+				</g>
+			</svg>
+		</figure>
+
+		<h3>sweep-flag</h3>
+		<code>&lt;path d="M33,33 A33,33 0 0 <strong>1</strong> 67,67" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<g>
+					<path class="arcFlag" d="M33,33 A33,33 0 1 0 67,67" />
+					<path class="arcFlag" d="M33,33 A33,33 0 1 1 67,67" />
+					<path class="arcFlag" d="M33,33 A33,33 0 0 0 67,67" />
+					<path d="M33,33 A33,33 0 0 1 67,67" />
+				</g>
+			</svg>
+		</figure>
+		
+		<h3>large-arc-flag + sweep-flag</h3>
+		<code>&lt;path d="M33,33 A33,33 0 <strong>1 1</strong> 67,67" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<g>
+					<path class="arcFlag" d="M33,33 A33,33 0 1 0 67,67" />
+					<path class="arcFlag" d="M33,33 A33,33 0 0 1 67,67" />
+					<path class="arcFlag" d="M33,33 A33,33 0 0 0 67,67" />
+					<path d="M33,33 A33,33 0 1 1 67,67" />
+				</g>
+			</svg>
+		</figure>
+
+		<hr />
+		
+		<h3>x-axis-rotation</h3>
+		<code>&lt;path d="M45,10 A15,45 <strong>0</strong> 0 0 L95,10z" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<path d="M45,10 A15,45 0 0 0 95,10" />
+			</svg>
+		</figure>
+
+		<code>&lt;path d="M45,10 A15,45 <strong>15</strong> 0 0 L95,10z" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<path d="M45,10 A15,45 15 0 0 95,10" />
+			</svg>
+		</figure>
+
+		<code>&lt;path d="M45,10 A15,45 <strong>30</strong> 0 0 L95,10z" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<path d="M45,10 A15,45 30 0 0 95,10" />
+			</svg>
+		</figure>
+
+		<code>&lt;path d="M45,10 A15,45 <strong>60</strong> 0 0 L95,10z" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<path d="M45,10 A15,45 60 0 0 95,10" />
+			</svg>
+		</figure>
+
+		<code>&lt;path d="M45,10 A15,45 <strong>90</strong> 0 0 L95,10z" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<path d="M45,10 A15,45 90 0 0 95,10" />
+			</svg>
+		</figure>
+
+		<figure>
+		  <svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 320 320">
+			  <path
+			  	d="M0 160
+					L5 160
+					A25,30 0 0 0 35,160
+					A35,35 0 1 0 75,160
+					A35,40 0 0 1 135,160
+					A35,45 0 1 1 215,160
+					A35,50 0 0 0 315,160
+					L320 160
+					"/>
+			</svg>
+		</figure>
+		<figure>
+		  <svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 320 320">
+			  <path
+			  	d="M0 160
+					L5 160
+					A35,60 30 0 0 35,160
+					A35,60 30 1 0 65,160
+					A35,60 30 0 1 95,160
+					A35,60 30 1 1 125,160
+					l5,0
+					a35,60 -30 0 0 30,0
+					a35,60 -30 1 0 30,0
+					a35,60 -30 0 1 30,0
+					a35,60 -30 1 1 30,0
+					L320 160
+					"/>
+			</svg>
+		</figure>
+	</section>
+
+	<section id="bezier">
+		<h2>path: cubic b&eacute;zier</h2>
+		<p>Commands</p>
+		<ul>
+			<li>CurveTo (<b>C</b>ubic)</li>
+			<li>Mirror Handle (Cubic <b>S</b>)</li>
+		</ul>
+		<code>&lt;path d="M3,4 C1,1 1,7 5,4" /&gt;</code>
+		<figure><img src="bezierC.svg" /></figure>
+
+		<code>&lt;path d="M10,60 C-10,90 110,90 90,60" /&gt;</code>
+		<style>
+			.showPath .path {
+				stroke: rgba(255,255,255,0);
+				fill: rgba(255,255,255,0.0);
+				stroke-width: 1;
+			}
+			.showPath:hover .path {
+				stroke: rgba(255,255,255,0.3);
+				fill: rgba(255,255,255,0.1);
+			}
+		</style>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<g class="showPath">
+					<path class="path" d="M10,10 -10,40 110,40 90,10" />
+					<path d="M10,10 C-10,40 110,40 90,10" />
+				</g>
+			</svg>
+		</figure>
+		<code>&lt;path d="M50,90 C-15,40 10,5 50,30 C90,5 110,40 50,90z" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<g class="showPath">
+					<path class="path" d="M50,90 -15,40 10,5 50,30 90,5 110,40 50,90z" />
+					<path d="M50,90 C-15,40 10,5 50,30 C90,5 110,40 50,90z" />
+				</g>
+			</svg>
+		</figure>
+		
+		<!-- Quadratic -->
+		<h2>path: quadratic b&eacute;zier </h2>
+		<p>Commands</p>
+		<ul>
+			<li>CurveTo (<b>Q</b>uadratic)</li>
+			<li>Mirror Handle (Quadratic <b>T</b>)</li>
+		</ul>
+		<code>&lt;path d="M3,4 Q4,1 5,4" /&gt;</code>
+		<figure><img src="bezierQ.svg" /></figure>
+		<code>&lt;path d="M5,80 Q50,5 95,80" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<g class="showPath">
+					<path class="path" d="M5,80 50,5 95,80" />
+					<path d="M5,80 Q50,5 95,80" />
+				</g>
+			</svg>
+		</figure>
+
+		<h3>Mirror handles</h3>
+		<code>&lt;path d="M5,40 C20,5 32.5,5 50,40 <strong>S82.5,75</strong> 95,40" /&gt;
+&lt;path d="M5,40 Q25,-15 50,40 <strong>T95,40</strong>" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<g class="showPath">
+					<path class="path" d="M5,40 20,5 32.5,5 50,40 82.5,75 95,40" />
+					<path d="M5,40 C20,5 32.5,5 50,40 S 82.5,75 95,40" />
+				</g>
+			</svg>
+		</figure>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<g class="showPath">
+					<path class="path" d="M5,40 25,-15 50,40 95,40" />
+					<path d="M5,40 Q25,-15 50,40 T95,40" />
+				</g>
+				<!-- <path d="M25,-15 75 105" /> -->
+			</svg>
+		</figure>
+	</section>
+
+	<section id="image">
+		<h2>&lt;image&gt;</h2>
+		<code>&lt;image xlink:href="hulk01.png" x="0" y="0" width="100" height="100" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<image xlink:href="hulk01.png" x="0" y="0" width="100" height="100" />
+			</svg>
+		</figure>
+
+		<code>&lt;image xlink:href="data:image/png;base64,..." x="42" y="42" width="16" height="16" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAMAAABgOjJdAAAANlBMVEUAAADWwYHWwYHWwYHWwYHWwYHWwYHWwYHWwYHWwYHWwYHWwYHWwYHWwYHWwYHWwYHWwYHWwYGXPMC6AAAAEXRSTlMAWuB6SwmYZ+y6xTeIIdU9nMFxFAoAAACxSURBVDjLrZRLFoMgDEWjKCHip9n/Zqs9lABF36R34iD36DMkUMHmZA8adnEb9eBRjZGpZUp1c6ZaWPWXlYxZtIfMWVi0z/JVvN7hU0i95xN3Dg9GuL7D+gSfRn7Fi5nlync+c7RAFLM+pL74KlskVxmRmY/KcCSFYZghFkMXf6R69KIWpA1+MWjBPwycA/8L7gfuKT4XfLZ4PvCM4TnFs473Be8c3lu8++39cVab++MNX08wI5ZKhrMAAAAASUVORK5CYII=" x="25" y="25" width="50" height="50" />
+			</svg>
+		</figure>
+		<ul>
+			<li>xlink namespace is not required for inline SVGs</li>
+		</ul>
+		<code>xmlns:xlink="http://www.w3.org/1999/xlink"</code>
+	</section>
+
+	<section id="transforms">
+		<h2>Transform</h2>
+		<h3>Original</h3>
+		<code>&lt;rect x="25" y="25" width="50" height="50" /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50" />
+			</svg>
+		</figure>
+		<h3>Translate</h3>
+		<code>&lt;rect x="25" y="25" width="50" height="50" <strong>transform="translate(20,0)"</strong> /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50" transform="translate(20,0)" />
+			</svg>
+		</figure>
+		<h3>Rotate</h3>
+		<code>&lt;rect x="25" y="25" width="50" height="50" <strong>transform="rotate(35)"</strong> /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50" transform="rotate(35)" />
+			</svg>
+		</figure>
+		<code>&lt;rect x="25" y="25" width="50" height="50" <strong>transform="rotate(35 50,50)"</strong> /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50" transform="rotate(45 50,50)" />
+			</svg>
+		</figure>
+		<h3>Skew</h3>
+		<code>&lt;rect x="25" y="25" width="50" height="50" <strong>transform="skewX(20)"</strong> /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50" transform="skewX(20)" />
+			</svg>
+		</figure>
+		<code>&lt;rect x="25" y="25" width="50" height="50" <strong>transform="skewY(20)"</strong> /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50" transform="skewY(20)" />
+			</svg>
+		</figure>
+		<code>&lt;rect x="25" y="25" width="50" height="50" <strong>transform="skewX(20) skewY(20)"</strong> /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50" transform="skewX(20) skewY(20)" />
+			</svg>
+		</figure>
+		<code>&lt;rect x="25" y="25" width="50" height="50" <strong>transform="skewY(20) skewX(20)"</strong> /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50" transform="skewY(20) skewX(20)" />
+			</svg>
+		</figure>
+		<h3>Scale</h3>
+		<code>&lt;rect x="25" y="25" width="50" height="50" <strong>transform="scale(1.5)"</strong> /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50" transform="scale(1.5)" />
+			</svg>
+		</figure>
+		<h3>Matrix</h3>
+		<p>To tranform: matrix(scaleX, skewX, skewY, scaleY, translateX, translateY)</p>
+		<code>&lt;rect x="25" y="25" width="50" height="50" <strong>transform="matrix(-1,-.2,.5,1,75,10)"</strong> /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50" transform="matrix(-1,-.2,.5,1,75,10)" />
+			</svg>
+		</figure>
+		<p>To rotate: matrix(cos, sin, -sin, cos, translateX, translateY)</p>
+		<code>&lt;rect x="25" y="25" width="50" height="50" <strong>transform="matrix(.707,.707,-.707,.707,50,-20)"</strong> /&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50" transform="matrix(.707,.707,-.707,.707,50,-20)" />
+			</svg>
+		</figure>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<rect x="25" y="25" width="50" height="50" transform="rotate(45 50,50)" />
+			</svg>
+		</figure>
+	</section>
+
+	<section id="viewBox">
+		<h2>viewBox</h2>
+		<p>The viewBox is the area of the artwork in the SVG that will be displayed or output. Elements that exist outside of the viewBox will not be seen.</p>
+		<code>&lt;svg <strong>viewBox="0 0 10 6"</strong>&gt;</code>
+		<code>&lt;svg <strong>viewBox="0,0 10,6"</strong>&gt;</code>
+		<figure><img src="viewBox.svg"/></figure>
+		
+		<hr />
+		<p>You can think of the viewBox as an analog to the artboard in Adobe Illustrator. When Illustrator exports SVG files the artboard defines the viewBox. </p>
+		<figure><img src="artboard.png" /></figure>
+
+		<h2>viewBox (cropped)</h2>
+		<code>&lt;svg viewBox="0 0 900 100"&gt;</code>
+		<figure>
+			<svg viewBox="0 0 900 100">
+				<circle cx="50" cy="50" r="25" />
+				<rect x="100" y="25" width="50" height="50" />
+				<rect x="175" y="25" width="100" height="50" />
+				<polygon points="360,20 400,80 320,80"/>
+				<polygon points="445,15 475,30 475,60 445,75 415,60 415,30"/>
+				<text x="500" y="75">I &#10084;<!-- use the character reference, not the html entity --> SVG!</text>
+				<image xlink:href="hulk01.png" x="750" y="5" height="100" width="100" />
+			</svg>
+		</figure>
+		<p>Using the SVG above, we can change the viewBox so that only portions of the SVG are displayed.</p>
+		<code>&lt;svg width="100" height="100" viewBox="0 0 100 100"&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<circle cx="50" cy="50" r="25" />
+				<rect x="100" y="25" width="50" height="50" />
+				<rect x="175" y="25" width="100" height="50" />
+				<polygon points="360,20 400,80 320,80"/>
+				<polygon points="445,15 475,30 475,60 445,75 415,60 415,30"/>
+				<text x="500" y="75">I &#10084;<!-- use the character reference, not the html entity --> SVG!</text>
+				<image xlink:href="hulk01.png" x="750" y="5" height="100" width="100" />
+			</svg>
+		</figure>
+
+		<code>&lt;svg width="100" height="100" viewBox="100 0 100 100"&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="100 0 100 100">
+				<circle cx="50" cy="50" r="25" />
+				<rect x="100" y="25" width="50" height="50" />
+				<rect x="175" y="25" width="100" height="50" />
+				<polygon points="360,20 400,80 320,80"/>
+				<polygon points="445,15 475,30 475,60 445,75 415,60 415,30"/>
+				<text x="500" y="75">I &#10084;<!-- use the character reference, not the html entity --> SVG!</text>
+				<image xlink:href="hulk01.png" x="750" y="5" height="100" width="100" />
+			</svg>
+		</figure>
+
+		<code>&lt;svg width="100" height="100" viewBox="500 0 100 100"&gt;</code>
+		<figure>
+			<svg width="200" height="200" viewBox="515 0 90 100">
+				<circle cx="50" cy="50" r="25" />
+				<rect x="100" y="25" width="50" height="50" />
+				<rect x="175" y="25" width="100" height="50" />
+				<polygon points="360,20 400,80 320,80"/>
+				<polygon points="445,15 475,30 475,60 445,75 415,60 415,30"/>
+				<text x="500" y="75">I &#10084;<!-- use the character reference, not the html entity --> SVG!</text>
+				<image xlink:href="hulk01.png" x="750" y="5" height="100" width="100" />
+			</svg>
+		</figure>
+	</section>
+
+	<section id="g">
+		<h2>&lt;g&gt;</h2>
+		<p>The &lt;g&gt; element allows you to group elements together and apply attributes, styles, filters collectively.</p>
+		<code>&lt;g fill="white" stroke="grey" stroke-width="7.5" transform="translate(0 20)"&gt;
+	&lt;rect x="175" y="25" width="50" height="50" /&gt;
+	&lt;rect x="250" y="25" width="50" height="50" /&gt;
+	&lt;rect x="325" y="25" width="50" height="50" /&gt;
+&lt;/g&gt;</code>
+		<figure>
+			<svg width="1000" height="200" viewBox="0 0 500 100">
+				<rect x="25" y="25" width="50" height="50" />
+				<rect x="175" y="25" width="50" height="50" />
+				<g fill="white" stroke="grey" stroke-width="7.5" transform="rotate(9, 500,100) translate(0 35)">
+					<rect x="100" y="25" width="50" height="50" />
+					<rect x="250" y="25" width="50" height="50" />
+					<rect x="325" y="25" width="50" height="50" />
+				</g>
+				<rect x="400" y="25" width="50" height="50" />
+			</svg>
+		</figure>
+	</section>
+	
+	<section id="defs">
+		<h2>&lt;defs&gt;</h2>
+		<p>&lt;defs&gt; should contain graphical objects to be defined for later reuse. SVG gradients, patterns, masks, markers, clip paths, and filters are a subject of their own presentation.</p>
+		<code>&lt;defs&gt;
+	&lt;style&gt;
+		.go {
+			fill: green;
+		}
+	&lt;/style&gt;
+	&lt;linearGradient id="Gradient01"&gt;
+		&lt;stop offset="20%" stop-color="#39F" /&gt;
+		&lt;stop offset="90%" stop-color="#F3F" /&gt;
+	&lt;/linearGradient&gt;
+	&lt;pattern id="stripe" width="10" height="10" patternUnits="userSpaceOnUse" stroke="white" fill="none" stroke-width="1"&gt;
+		&lt;path fill="white" d="M0,0L10,5L0,10" /&gt;
+	&lt;/pattern&gt;
+	&lt;mask id="hulkMask" maskUnits="userSpaceOnUse" &gt;
+		&lt;image xlink:href="hulk01.png" x="55" y="15" width="200" height="200" viewBox="0 0 100 100" /&gt;
+	&lt;/mask&gt;
+		&lt;circle id="hulkContainer" class="go" cx="75" cy="50" r="25" /&gt;
+	&lt;marker id="Triangle2" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto" stroke="none" fill="black" stroke-width="0"&gt;
+		&lt;path fill="white" d="M0,0L10,5L0,10z" /&gt;
+	&lt;/marker&gt;
+	&lt;clipPath id="myClip"&gt;
+		&lt;circle cx="420" cy="50" r="30" fill="green" /&gt;
+	&lt;/clipPath&gt;
+	&lt;symbol id="card" viewBox="0 0 100 100"&gt;
+		&lt;rect x="0" y="0" width="75" height="75" /&gt;
+		&lt;path d="M50 90 C -15 40, 10 5, 50 30 C 90 5, 110 40, 50 90z" fill="rgba(255,0,0,1)" /&gt;
+	&lt;/symbol&gt;
+&lt;/defs&gt;
+		</code>
+		
+		<figure>
+			<svg width="1200" height="200" viewBox="0 0 600 100">
+				<defs>
+					<style>
+						.go {
+							fill: green;
+						}
+					</style>
+					<linearGradient id="Gradient01">
+						<stop offset="20%" stop-color="#39F" />
+						<stop offset="90%" stop-color="#F3F" />
+					</linearGradient>
+					<pattern id="stripe" width="10" height="10" patternUnits="userSpaceOnUse" stroke="white" fill="none" stroke-width="1">
+						<path d="M0,0L10,5L0,10" />
+					</pattern>
+					<mask id="hulkMask" maskUnits="userSpaceOnUse" >
+						<image xlink:href="hulk01.png" x="55" y="15" width="100" height="100" viewBox="0 0 100 100" />
+					</mask>
+					<circle id="hulkContainer" class="go" cx="75" cy="50" r="25" />
+					<marker id="Triangle2" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto" stroke="none" fill="white" stroke-width="0">
+						<path d="M0,0L10,5L0,10z" />
+					</marker>
+					<clipPath id="myClip">
+						<circle cx="420" cy="50" r="30" fill="green" />
+					</clipPath>
+				</defs>
+				<circle class="go" cx="50" cy="50" r="25" />
+				<rect x="100" y="25" width="50" height="50" fill="url(#Gradient01)" />
+				<rect x="175" y="25" width="50" height="50" fill="url(#stripe)" />
+				<use xlink:href="#hulkContainer" x="200" mask="url(#hulkMask)"/>
+				<image id="hulkContainer" xlink:href="hulk01.png" x="390" y="15" width="100" height="100" viewBox="0 0 100 100" clip-path="url(#myClip)" />
+				<line x1="325" y1="25" x2="375" y2="75" marker-end="url(#Triangle2)" />
+				<use xlink:href="#card" x="475" y="25" width="75" height="75"/>
+			</svg>
+		</figure>
+	</section>
+	
+	<section id="style">
+		<h2>&lt;style&gt;</h2>
+		<p>CSS is supported in the SVG code.</p>
+		<code>&lt;style&gt;
+	.circle1 {
+		fill: rgba(255, 0, 0, 0.3);
+	}
+	.go {
+		fill: green;
+	}
+	@media only screen and (min-width: 770px) {
+		.small { display: none; }
+	}
+	@media only screen and (max-width: 770px) {
+		.medium { display: none; }
+	}
+&lt;/style&gt;
+		</code>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<defs>
+					<style>
+						.circle1 {
+							fill: rgba(255, 0, 0, 0.3);
+						}
+						.go {
+							fill: green;
+						}
+						@media only screen and (min-width: 770px) {
+							.small { display: none; }
+						}
+						@media only screen and (max-width: 770px) {
+							.medium { display: none; }
+						}
+					</style>
+				</defs>
+				<g class="small">
+					<circle class="go circle1" cx="50" cy="50" r="25" />
+				</g>
+				<g class="medium">
+					<circle class="circle1" cx="50" cy="50" r="33" />
+					<circle class="circle1" cx="50" cy="50" r="25" />
+					<circle class="circle1" cx="50" cy="50" r="20" />
+				</g>
+			</svg>
+
+		<p>Media queries continue to work within linked SVGs based on the width of the image container.</p>
+		
+		<div style="width: 200px;">
+				<svg width="200" height="200" viewBox="0 0 100 100">
+					<defs>
+						<style>
+							.circle1 {
+								fill: rgba(255, 0, 0, 0.3);
+							}
+							.go {
+								fill: green;
+							}
+							@media only screen and (min-width: 770px) {
+								.small { display: none; }
+							}
+							@media only screen and (max-width: 770px) {
+								.medium { display: none; }
+							}
+						</style>
+					</defs>
+					<g class="small">
+						<circle class="go circle1" cx="50" cy="50" r="25" />
+					</g>
+					<g class="medium">
+						<circle class="circle1" cx="50" cy="50" r="33" />
+						<circle class="circle1" cx="50" cy="50" r="25" />
+						<circle class="circle1" cx="50" cy="50" r="20" />
+					</g>
+				</svg>
+			<img width="100%" height="200" border="1" src="mediaquery.svg" />
+		</div>
+		<div style="width: 771px;">
+				<svg width="200" height="200" viewBox="0 0 100 100">
+					<defs>
+						<style>
+							.circle1 {
+								fill: rgba(255, 0, 0, 0.3);
+							}
+							.go {
+								fill: green;
+							}
+							@media only screen and (min-width: 770px) {
+								.small { display: none; }
+							}
+							@media only screen and (max-width: 770px) {
+								.medium { display: none; }
+							}
+						</style>
+					</defs>
+					<g class="small">
+						<circle class="go circle1" cx="50" cy="50" r="25" />
+					</g>
+					<g class="medium">
+						<circle class="circle1" cx="50" cy="50" r="33" />
+						<circle class="circle1" cx="50" cy="50" r="25" />
+						<circle class="circle1" cx="50" cy="50" r="20" />
+					</g>
+				</svg>
+			<img width="100%" height="200" border="1" src="mediaquery.svg" />
+		</div>
+		<div>
+				<svg width="200" height="200" viewBox="0 0 100 100">
+					<defs>
+						<style>
+							.circle1 {
+								fill: rgba(255, 0, 0, 0.3);
+							}
+							.go {
+								fill: green;
+							}
+							@media only screen and (min-width: 770px) {
+								.small { display: none; }
+							}
+							@media only screen and (max-width: 770px) {
+								.medium { display: none; }
+							}
+						</style>
+					</defs>
+					<g class="small">
+						<circle class="go circle1" cx="50" cy="50" r="25" />
+					</g>
+					<g class="medium">
+						<circle class="circle1" cx="50" cy="50" r="33" />
+						<circle class="circle1" cx="50" cy="50" r="25" />
+						<circle class="circle1" cx="50" cy="50" r="20" />
+					</g>
+				</svg>
+			<img width="100%" height="200" border="1" src="mediaquery.svg" />
+		</div>
+	</section>
+	
+	<section id="animation">
+		<h2>animation</h2>
+		<p>Animation can be implemented using CSS. Internet Explorer does not support SVG animation.</p>
+
+		<h3>Line drawing</h3>
+		<svg height="200" width="600" viewBox="0 0 300 100">
+			<text class="draw-slow" x="20" y="60" fill="red" >I <tspan fill="red" stroke="none">&#10084;</tspan> SVG!</text>
+		</svg>
+
+		<h3>Dots Loading</h3>
+		<svg width="200" height="200" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgba(255, 255, 255, 0.87)" stroke="none">
+			<style>
+			@keyframes fadeIn {  from { fill: rgba(255, 255, 255, 0.1); } }
+			.loading-dot { animation: fadeIn 0.999999s infinite alternate;}
+			.loading-dot:nth-of-type(2n) {animation-delay: 0.333333s;}
+			.loading-dot:nth-of-type(3n) {animation-delay: 0.666666s;}
+			.loading-dot:nth-of-type(4n) {animation-delay: 0.999999s;}
+			</style>
+			<circle cx="50" cy="50" r="46" stroke="none" fill="rgba(0, 0, 0, 0.87)"/>
+			<circle stroke="none" fill="#fff" class="loading-dot" cx="23" cy="50" r="8.9"/>
+			<circle stroke="none" fill="#fff" class="loading-dot" cx="50" cy="50" r="8.9"/>
+			<circle stroke="none" fill="#fff" class="loading-dot" cx="77.4" cy="50" r="8.9"/>
+		</svg>
+
+		<h3>Circle Loading</h3>
+		<object type="image/svg+xml" height="200" width="200" data="loading-circle.svg"></object>
+	</section>
+	
+	<section id="symbol">
+		<h2>&lt;symbol&gt;</h2>
+		<code>&lt;symbol id="card" viewBox="0 0 100 100"&gt;
+	&lt;rect x="0" y="0" width="75" height="75" /&gt;
+	&lt;path d="M50 90 C -15 40, 10 5, 50 30 C 90 5, 110 40, 50 90z" fill="rgba(255,0,0,1)" /&gt;
+&lt;/symbol&gt;
+&lt;symbol id="nested" viewBox="0 0 100 100"&gt;
+	&lt;circle class="go" cx="50" cy="50" r="25" /&gt;
+	&lt;use xlink:href="#card" x="50" y="50" width="15" height="15"/&gt;
+	&lt;text x="33" y="48" font-size="12" stroke="none" &gt;nested&lt;/text&gt;
+&lt;/symbol&gt;</code>
+		<figure>
+			<svg width="600" height="200" viewBox="0 0 300 100">
+				<defs>
+					<symbol id="card" viewBox="0 0 100 100">
+						<rect x="0" y="0" width="75" height="75" />
+						<path d="M50 90 C -15 40, 10 5, 50 30 C 90 5, 110 40, 50 90z" fill="rgba(255,0,0,1)" />
+					</symbol>
+					<symbol id="nested" viewBox="0 0 100 100">
+						<circle class="go" cx="50" cy="50" r="25" />
+						<use xlink:href="#card" x="50" y="50" width="15" height="15"/>
+						<text x="33" y="48" font-size="12" stroke="none" >nested</text>
+					</symbol>
+				</defs>
+				<use xlink:href="#card" x="25" y="25" width="15" height="15"/>
+				<use xlink:href="#card" x="75" y="33" width="75" height="75"/>
+				<use xlink:href="#card" x="160" y="15" width="25" height="25" fill="#9999ff" />
+				<use xlink:href="#card" x="200" y="25" width="25" height="25" fill="none" stroke="red" stroke-width="6" />
+				<use xlink:href="#nested"  width="100" x="220" y="0" height="100" />
+			</svg>
+		</figure>
+	</section>
+	
+	<section id="use">
+		<h2>&lt;use&gt;</h2>
+		<p>Once the symbol is in your document, you can reuse it anywhere else in your document with the &lt;use&gt; element.</p>
+		<code>&lt;svg height="200" width="200"&gt;
+	&lt;use xlink:href="#card" x="10%" y="10%" width="80%" height="80%" /&gt;
+&lt;/svg&gt;</code>
+		<figure>
+			<svg height="200" width="200">
+				<use xlink:href="#card" x="10%" y="10%" width="80%" height="80%"/>
+			</svg>
+		</figure>
+	</section>
+	
+	<section id="script">
+		<h2>&lt;script&gt;</h2>
+		<code>&lt;script&gt;
+	function change(evt) {
+		var radius = evt.target.getAttribute("r") == 15 ? 30 : 15;
+		evt.target.setAttribute("r",radius);
+	}
+&lt;/script&gt;
+		</code>
+		<figure>
+			<svg width="200" height="200" viewBox="0 0 100 100">
+				<script>
+					function change(evt) {
+						var radius = evt.target.getAttribute("r") == 15 ? 30 : 15;
+						evt.target.setAttribute("r",radius);
+					}
+				</script>
+				<text class="draw" x="50" y="20" style="font-size:12px; text-anchor: middle; fill: white; stroke:none;">click the circles!</text>
+				<circle cx="50" cy="60" r="30" onclick="change(evt)" />
+				<circle cx="20" cy="90" r="15" onclick="change(evt)" />
+				<circle cx="80" cy="90" r="15" onclick="change(evt)" />
+			</svg>
+		</figure>
+	</section>
+	
+	<section id="foreignObject">
+		<h2>&lt;foreignObject&gt;</h2>
+		<p>Use the foreignObject tag to insert HTML elements into an SVG. Sorry, it doesn't work in Internet Explorer.</p>
+		<figure>
+			<svg width="800" height="600" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+				<title>HTML Content in SVG</title>
+				<desc>Use the foreignObject tag to insert HTML elements into an SVG</desc>
+				<foreignObject x="20" y="20" width="90%">
+					<!-- HTML content goes here -->
+					<body id="foreign">
+						<style>
+							table, tr, td { border:1px solid #fff; color: #fff; }
+							table { background-color: rgba(255, 255, 255, 0.1); }
+							td { background-color: rgba(255, 255, 255, 0.1); }
+						</style>
+						<h1 style="font-size: 36px; color: #fff;">HTML&rarr;SVG</h1>
+						<p style="font-size: 16px; color: #fff;">Web Development Invoice</p>
+						<table width="100%">
+							<tr>
+								<th>item</th><th>units</th><th>price</th>
+							</tr>
+							<tr>
+								<td>HTML</td><td>5</td><td align="right">$20.00</td>
+							</tr>
+							<tr>
+								<td>CSS</td><td>3</td><td align="right">$15.00</td>
+							</tr>
+							<tr>
+								<td>SVG</td><td>1</td><td align="right">$15.00</td>
+							</tr>
+							<tr>
+								<td>White space</td><td>40 ft<sup>2</sup></td><td align="right">$4000.00</td>
+							</tr>
+							<tr>
+								<td colspan="2">Total</td><td align="right">$4050.00</td>
+							</tr>
+						</table>
+					</body>
+				</foreignObject>
+			</svg>
+		</figure>
+	</section>
+	
+	<section id="switch">
+		<h2>&lt;switch&gt;</h2>
+		<p>&lt;switch&gt; is an SVG element that can be used to check for the existence of SVG features or language support.</p>
+		<code>&lt;switch&gt;
+	&lt;text systemLanguage="es"&gt;Hola!&lt;/text&gt;
+	&lt;text systemLanguage="en"&gt;Hello!&lt;/text&gt;
+	&lt;text systemLanguage="hi"&gt;नमस्ते&lt;/text&gt;
+	&lt;text systemLanguage="en-au"&gt;G'day!&lt;/text&gt;
+	&lt;text systemLanguage="fr"&gt;Bonjour!&lt;/text&gt;
+	&lt;text systemLanguage="en"&gt;I said, Hello!&lt;/text&gt;
+	&lt;text&gt;Fine then, I didn't want to say 'Hi' anyway.&lt;/text&gt;
+&lt;/switch&gt;
+		</code>
+		<figure>
+			<svg width="40%" viewBox="-8 -50 200 66">
+				<switch>
+					<text systemLanguage="es">Hola!</text>
+					<text systemLanguage="en">Hello!</text>
+					<text systemLanguage="hi">नमस्ते</text>
+					<text systemLanguage="en-au">G'day!</text>
+					<text systemLanguage="fr">Bonjour!</text>
+					<text systemLanguage="en">I said, Hello!</text>
+					<text>Fine then, I didn't want to say 'Hi' anyway.</text>
+				</switch>
+			</svg>
+		</figure>
+
+		<h3>requiredFeatures</h3>
+		<p>The following switch statement was written to replace the animated SVGs with an animated gif in browsers that don't support the SVG animation feature (such as Internet Explorer).</p>
+		<code>
+&lt;switch&gt;
+	&lt;g <strong>requiredFeatures="http://www.w3.org/TR/SVG11/feature#SVG-animation"</strong>&gt;
+		&lt;circle class="loading-dot" cx="23" cy="50" r="8.9"/&gt;
+		&lt;circle class="loading-dot" cx="50" cy="50" r="8.9"/&gt;
+		&lt;circle class="loading-dot" cx="77.4" cy="50" r="8.9"/&gt;
+	&lt;/g&gt;
+	&lt;image xlink:href="loading-dots-svg-backup.gif" x="0" y="0" height="100px" width="100px"&gt;&lt;/image&gt;
+&lt;/switch&gt;
+		</code>
+
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgba(255, 255, 255, 0.87)" stroke="none" width="400" height="400" viewBox="0 0 100 100">
+			<style>
+			
+			@keyframes fadeIn {  from { fill: rgba(255, 255, 255, 0.1); } }
+			.loading-dot { animation: fadeIn 0.999999s infinite alternate; stroke: none; fill: #fff;}
+			.loading-dot:nth-of-type(2n) {animation-delay: 0.333333s;}
+			.loading-dot:nth-of-type(3n) {animation-delay: 0.666666s;}
+			.loading-dot:nth-of-type(4n) {animation-delay: 0.999999s;}
+			
+			</style>
+			<circle cx="50" cy="50" r="46" fill="rgba(0, 0, 0, 0.87)"/>
+			<switch>
+				<g requiredFeatures="http://www.w3.org/TR/SVG11/feature#SVG-animation">
+					<circle class="loading-dot" cx="23" cy="50" r="8.9"/>
+					<circle class="loading-dot" cx="50" cy="50" r="8.9"/>
+					<circle class="loading-dot" cx="77.4" cy="50" r="8.9"/>
+				</g>
+				<image xlink:href="loading-dots-svg-backup.gif" x="0" y="0" height="100px" width="100px"></image>
+			</switch>
+		</svg>
+
+		<h3>GIF included version</h3>
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgba(255, 255, 255, 0.87)" stroke="none" width="400" height="400" viewBox="0 0 100 100">
+			<circle cx="50" cy="50" r="46" fill="rgba(0, 0, 0, 0.87)"/>
+			<switch>
+				<g requiredFeatures="http://www.w3.org/TR/SVG11/feature#SVG-static">
+					<image xlink:href="loading-dots-svg-backup.gif" x="0" y="0" height="100px" width="100px"></image>
+				</g>
+			</switch>
+		</svg>
+	</section>
+
+	
+	<section id="object">
+		<h2>&lt;object&gt;</h2>
+		<p>The &lt;object&gt; tag allows for interactivy in a linked file, much the same way that Adobe Flash used to be added to a page. Older (much older) browsers might require the use of &lt;embed&gt; to use the browser's SVG plugin.</p>
+		<code>&lt;object type="image/svg+xml" data="component.svg" width="100%" height="200" &gt;&lt;/object&gt;</code>
+		<object type="image/svg+xml" data="component.svg" width="200" height="200" ></object>
+		
+		<p>Scripting and font imports don't work when the SVG is displayed using an &lt;img&gt; element.</p>
+		<code>&lt;img src="component.svg" width="100%" height="200" /&gt;</code>
+		<img src="component.svg" width="200" height="200" />
+	</section>
+
+	<section id="more">
+		<h2>more&hellip;</h2>
+		<ul>
+			<li>CSS-Tricks Lodge: <a href="https://css-tricks.com/lodge/svg/">Everything You Need To Know About SVG</a></li>
+			<li><a href="http://www.adobe.com/devnet/svg.html">Adobe SVG Developer Center</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG">SVG on MDN</a></li>
+			<li><a href="https://www.w3.org/Graphics/SVG/">W3C SVG Working Group</a></li>
+		</ul>
+	</section>
+</body>
+</html>
